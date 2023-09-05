@@ -28,5 +28,7 @@
 
 - string type의 인자를 받는다.
 - string을 스프레드로 풀어서 배열로 만든다.
-- forEach로 순회하면서 현재 순회중인 요소의 인덱스와 indexOf 메서드의 값이 다르면 중복되어있는 요소이므로 배열에서 제거한다.
-- 배열을 join메서드로 다시 string으로 변환한다.
+- forEach로 순회하면서 바로 옆의 요소와 같은 문자인지를 확인한다.
+  - 만일 같은 문자라면 isContinuous 를 true로 한다.
+    - 그리고 해당 문자를 slice를 통해 제거한다.
+  - isContinuous가 false가 될 때까지 반복한다.
