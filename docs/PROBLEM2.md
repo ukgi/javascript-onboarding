@@ -22,3 +22,12 @@
 | "browoanoommnaon" | "brown" |
 | "zyelleyz"        | ""      |
 
+## problem2 기능 목록
+
+### feature 1 problem2 함수 작성하기
+
+- string type의 인자를 받는다.
+- 해당 인수를 for...of를 통해 순회한다.
+- 새로운 배열 result에 순회한 요소를 집어넣는다.
+- includes를 이용해서 result 배열에 이미 있는 요소는 집어넣지않는다.
+- result를 반환한다.
