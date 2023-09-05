@@ -1,6 +1,11 @@
 function problem1(pobi, crong) {
-  var answer;
-  return answer;
+  if (!exceptionHandler(pobi) || !exceptionHandler(crong)) {
+    return -1;
+  } else {
+    const pobiScore = getScore(pobi);
+    const crongScore = getScore(crong);
+    return pobiScore === crongScore ? 0 : pobiScore > crongScore ? 1 : 2;
+  }
 }
 
 module.exports = problem1;
