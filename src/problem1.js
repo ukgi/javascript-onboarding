@@ -17,7 +17,8 @@ function getScore(page) {
 }
 
 function exceptionHandler(page) {
-  if (page === [1, 2] || page === [399, 400]) return false;
+  if (page[0] === 1 || page[1] === 2 || page[0] === 399 || page[1] === 400) return false;
   else if (page[1] - page[0] !== 1) return false;
+  else if (page[0] % 2 === 0 || page[1] % 2 !== 0) return false;
   else return true;
 }
