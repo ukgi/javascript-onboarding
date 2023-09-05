@@ -27,7 +27,6 @@
 ### feature 1 problem2 함수 작성하기
 
 - string type의 인자를 받는다.
-- 해당 인수를 for...of를 통해 순회한다.
-- 새로운 배열 result에 순회한 요소를 집어넣는다.
-- includes를 이용해서 result 배열에 이미 있는 요소는 집어넣지않는다.
-- result를 반환한다.
+- string을 스프레드로 풀어서 배열로 만든다.
+- forEach로 순회하면서 현재 순회중인 요소의 인덱스와 indexOf 메서드의 값이 다르면 중복되어있는 요소이므로 배열에서 제거한다.
+- 배열을 join메서드로 다시 string으로 변환한다.
