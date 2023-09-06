@@ -32,3 +32,5 @@
   - 만일 같은 문자라면 isContinuous 를 true로 한다.
     - 그리고 해당 문자를 slice를 통해 제거한다.
   - isContinuous가 false가 될 때까지 반복한다.
+
+### refactor 1 정규표현식 사용하기
