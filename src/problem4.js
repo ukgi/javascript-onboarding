@@ -27,4 +27,4 @@ function convertFlogWord(word) {
   return String.fromCharCode(...result);
 }
 
-console.log(problem4('I love you'));
+// console.log(problem4('I love you'));
