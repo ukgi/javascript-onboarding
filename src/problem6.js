@@ -1,8 +1,15 @@
+// 테스트코드를 잘 작성하자!
+
 function problem6(forms) {
   const nicknameArr = makeNicknameArr(forms);
   const consecutiveLetters = checkDuplication(makeNicknameCombination(nicknameArr));
+  console.log(consecutiveLetters);
   const result = forms.reduce((acc, [email, nickname]) => {
-    nickname.includes(consecutiveLetters) ? acc.push(email) : acc;
+    for (let i = 0; i < consecutiveLetters.length; i++) {
+      if (nickname.includes(consecutiveLetters[i])) {
+        acc.push(email);
+      }
+    }
     return acc;
   }, []);
   return [...new Set(result)].sort();
@@ -33,7 +40,7 @@ function checkDuplication(arr) {
   arr.forEach((value, i) => {
     i !== arr.indexOf(value) ? duplication.push(value) : duplication;
   });
-  return [...new Set(duplication)].join('');
+  return [...new Set(duplication)];
 }
 
 module.exports = problem6;
@@ -44,6 +51,6 @@ module.exports = problem6;
 //     ['jason@email.com', '제이슨'],
 //     ['woniee@email.com', '워니'],
 //     ['mj@email.com', '엠제이'],
-//     ['nowm@email.com', '이제엠'],
+//     ['nowm@email.com', '제이제이제이'],
 //   ])
 // );
