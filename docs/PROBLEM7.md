@@ -30,7 +30,7 @@
 - friends 목록 중 user가 포함되어 있는 요소를 추출한다.
 - 위의 요소는 포함하되 user는 포함되어 있지 않는 즉, 이미 친구 관계인 것은 제외한 친구와 친구인 사람들의 목록을 분류하고 요소들을 객체로 만든다.
 
-  - 예를 들어 위의 예시에서는 user는 mrko이고 mrko와 친구인 사람들은 donut과 shakevan이다. mrko와의 친구관계를 제외한 donut과 shakevan과 친구인 사람들은 andole, jun이 있다.
+  - 예를 들어 위의 예시에서는 user는 mrko이고 mrko와 친구인 사람들은 donut과 shakevan이다. mrko와의 친구관계를 제외한(예를 들어 `['donut','mrko']`인 경우는 제외해야한다.) donut과 shakevan과 친구인 사람들은 andole, jun이 있다.
 
   - andole, jun 모두 user인 mrko와 함께 아는 친구가 donut과 shakevan이다. 이들은 각각 20점씩 획득하게된다.
   - user와 친구인 사람들과 친구인 목록들을 파악해서 이름과 점수를 객체로 만든다.

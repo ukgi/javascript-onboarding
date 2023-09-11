@@ -3,7 +3,7 @@ function problem7(user, friends, visitors) {
   const mutualFriends = checkMutualFriends(user, userFriends, friends);
   const visitorList = checkVisitor(userFriends, visitors);
   const combineMutualAndVisitor = combineScores(
-    makeObjectFriends(mutualFriends, 'mutualFriend').concat(makeObjectFriends(visitorList, 'visitor'))
+    makeObject(mutualFriends, 'mutualFriend').concat(makeObject(visitorList, 'visitor'))
   );
   return sortArray(combineMutualAndVisitor);
 }
@@ -27,11 +27,7 @@ function checkMutualFriends(user, userFriends, friends) {
       }
     });
   });
-  const mutualFriends = mutualFriendsWithUserFriends.flat(2).reduce((acc, cur) => {
-    !userFriends.includes(cur) ? acc.push(cur) : acc;
-    return acc;
-  }, []);
-  return mutualFriends;
+  return mutualFriendsWithUserFriends.flat(2).filter((user) => !userFriends.includes(user));
 }
 
 function checkVisitor(userFriends, visitors) {
@@ -45,7 +41,9 @@ function checkVisitor(userFriends, visitors) {
 }
 
 // ✅
-function makeObjectFriends(friends, option) {
+// 배열의 요소로 어떤값을 새롭게 매핑한다 -> map
+// 기존의 배열의 요소를 활용해서 어떤 값을 추출한다 -> reduce
+function makeObject(friends, option) {
   return friends.reduce((acc, cur) => {
     let found = false;
     const updatedAcc = acc.map((friend) => {
@@ -64,8 +62,8 @@ function makeObjectFriends(friends, option) {
 }
 
 // ✅
+// 함꼐아는 친구이면서 방문자인경우에는 점수를 합쳐야된다
 function combineScores(arr) {
-  const result = [];
   const scoreMap = {};
   arr.forEach(({ name, score }) => {
     if (scoreMap.hasOwnProperty(name)) {
@@ -75,11 +73,10 @@ function combineScores(arr) {
     }
   });
 
-  for (const name in scoreMap) {
-    result.push({ name: name, score: scoreMap[name] });
-  }
-
-  return result;
+  return Object.keys(scoreMap).map((name) => ({
+    name,
+    score: scoreMap[name],
+  }));
 }
 
 function sortArray(arr) {
@@ -91,17 +88,17 @@ function sortArray(arr) {
 
 module.exports = problem7;
 
-// console.log(
-//   problem7(
-//     'mrko',
-//     [
-//       ['donut', 'andole'],
-//       ['donut', 'jun'],
-//       ['donut', 'mrko'],
-//       ['shakevan', 'andole'],
-//       ['shakevan', 'jun'],
-//       ['shakevan', 'mrko'],
-//     ],
-//     ['bedi', 'bedi', 'donut', 'bedi', 'shakevan']
-//   )
-// );
+console.log(
+  problem7(
+    'mrko',
+    [
+      ['donut', 'andole'],
+      ['donut', 'jun'],
+      ['donut', 'mrko'],
+      ['shakevan', 'andole'],
+      ['shakevan', 'jun'],
+      ['shakevan', 'mrko'],
+    ],
+    ['bedi', 'bedi', 'donut', 'bedi', 'shakevan']
+  )
+);
