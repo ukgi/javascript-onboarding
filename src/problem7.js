@@ -1,6 +1,7 @@
 function problem7(user, friends, visitors) {
   const userFriends = checkUserFriends(user, friends);
-  return checkMutualFriends(user, userFriends, friends);
+  const mutualFriends = checkMutualFriends(user, userFriends, friends);
+  return makeObjectFriends(mutualFriends);
 }
 
 function checkUserFriends(user, friends) {
@@ -25,6 +26,25 @@ function checkMutualFriends(user, userFriends, friends) {
   const mutualFriends = mutualFriendsWithUserFriends.flat(2).reduce((acc, cur) => {
     !userFriends.includes(cur) ? acc.push(cur) : acc;
     return acc;
+  }, []);
+  return mutualFriends;
+}
+
+function makeObjectFriends(friends) {
+  return friends.reduce((acc, cur) => {
+    let found = false;
+    const updatedAcc = acc.map((friend) => {
+      if (friend.name === cur) {
+        found = true;
+        return { ...friend, score: friend.score + 10 };
+      }
+      return friend;
+    });
+
+    if (!found) {
+      updatedAcc.push({ name: cur, score: 10 });
+    }
+    return updatedAcc;
   }, []);
 }
 
